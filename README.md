@@ -93,7 +93,7 @@ print("Model exported successfully to yolov8n.onnx")
 ### CLI
 **Navigate to the YOLOv8-ONNXRuntime-CPP example directory:**
 ```bash
-cd ultralytics/examples/YOLOv8-ONNXRuntime-CPP
+cd examples/YOLOv8-ONNXRuntime-CPP
 ```
 
 **Export the model using the command line**
