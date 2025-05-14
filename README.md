@@ -68,6 +68,59 @@ Ensure you have the following dependencies installed:
 1.  **C++17:** The requirement stems from using the `<filesystem>` library introduced in C++17 for path handling.
 2.  **CUDA/cuDNN Versions:** ONNX Runtime's CUDA execution provider currently has strict version requirements (CUDA 11.x, cuDNN 8.x). Check the latest [ONNX Runtime documentation](https://onnxruntime.ai/docs/execution-providers/CUDA-ExecutionProvider.html) for any updates to these constraints. Using incompatible versions will lead to runtime errors.
 
+## 📦 Exporting YOLOv8 Models
+
+You can export your trained [Ultralytics YOLO](https://docs.ultralytics.com/) models to the ONNX format required by this project. Use the Ultralytics `export` mode for this.
+
+### Python
+
+```python
+from ultralytics import YOLO
+
+# Load a YOLOv8 model (e.g., yolov8n.pt)
+model = YOLO("yolov8n.pt")
+
+# Export the model to ONNX format
+# opset=12 is recommended for compatibility
+# simplify=True optimizes the model graph
+# dynamic=False ensures fixed input size, often better for C++ deployment
+# imgsz=640 sets the input image size
+model.export(format="onnx", opset=12, simplify=True, dynamic=False, imgsz=640)
+print("Model exported successfully to yolov8n.onnx")
+```
+
+### CLI
+
+```bash
+# Export the model using the command line
+yolo export model=yolov8n.pt format=onnx opset=12 simplify=True dynamic=False imgsz=640
+```
+
+For more details on exporting models, refer to the [Ultralytics Export documentation](https://docs.ultralytics.com/modes/export/).
+
+## 📦 Exporting YOLOv8 FP16 Models
+
+To potentially gain further performance on compatible hardware (like NVIDIA GPUs), you can convert the exported FP32 ONNX model to FP16.
+
+```python
+import onnx
+from onnxconverter_common import (
+    float16,
+)  # Ensure you have onnxconverter-common installed: pip install onnxconverter-common
+
+# Load your FP32 ONNX model
+fp32_model_path = "yolov8n.onnx"
+model = onnx.load(fp32_model_path)
+
+# Convert the model to FP16
+model_fp16 = float16.convert_float_to_float16(model)
+
+# Save the FP16 model
+fp16_model_path = "yolov8n_fp16.onnx"
+onnx.save(model_fp16, fp16_model_path)
+print(f"Model converted and saved to {fp16_model_path}")
+```
+
 ## 🛠️ Build Instructions
 
 1.  **Navigate to the YOLOv8-ONNXRuntime-CPP example directory:**
@@ -141,59 +194,6 @@ Run the executable from the `build` directory:
 
 ```bash
 ./yolov8_onnxruntime_cpp
-```
-
-## 📦 Exporting YOLOv8 Models
-
-You can export your trained [Ultralytics YOLO](https://docs.ultralytics.com/) models to the ONNX format required by this project. Use the Ultralytics `export` mode for this.
-
-### Python
-
-```python
-from ultralytics import YOLO
-
-# Load a YOLOv8 model (e.g., yolov8n.pt)
-model = YOLO("yolov8n.pt")
-
-# Export the model to ONNX format
-# opset=12 is recommended for compatibility
-# simplify=True optimizes the model graph
-# dynamic=False ensures fixed input size, often better for C++ deployment
-# imgsz=640 sets the input image size
-model.export(format="onnx", opset=12, simplify=True, dynamic=False, imgsz=640)
-print("Model exported successfully to yolov8n.onnx")
-```
-
-### CLI
-
-```bash
-# Export the model using the command line
-yolo export model=yolov8n.pt format=onnx opset=12 simplify=True dynamic=False imgsz=640
-```
-
-For more details on exporting models, refer to the [Ultralytics Export documentation](https://docs.ultralytics.com/modes/export/).
-
-## 📦 Exporting YOLOv8 FP16 Models
-
-To potentially gain further performance on compatible hardware (like NVIDIA GPUs), you can convert the exported FP32 ONNX model to FP16.
-
-```python
-import onnx
-from onnxconverter_common import (
-    float16,
-)  # Ensure you have onnxconverter-common installed: pip install onnxconverter-common
-
-# Load your FP32 ONNX model
-fp32_model_path = "yolov8n.onnx"
-model = onnx.load(fp32_model_path)
-
-# Convert the model to FP16
-model_fp16 = float16.convert_float_to_float16(model)
-
-# Save the FP16 model
-fp16_model_path = "yolov8n_fp16.onnx"
-onnx.save(model_fp16, fp16_model_path)
-print(f"Model converted and saved to {fp16_model_path}")
 ```
 
 ## 🤝 Contributing
