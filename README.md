@@ -14,6 +14,18 @@ This example provides a practical guide on performing inference with [Ultralytic
 
 Thanks to recent updates in Ultralytics, YOLOv8 models now include a `Transpose` operation, aligning their output shape with YOLOv5. This allows the C++ code in this project to run inference seamlessly for YOLOv5, YOLOv7, and YOLOv8 models exported to the [ONNX format](https://onnx.ai/).
 
+## Beforehand
+
+Update CMake above 3.29.2 and set environment variable
+```bash
+wget https://github.com/Kitware/CMake/releases/download/v3.29.2/cmake-3.29.2-linux-x86_64.sh
+chmod +x cmake-3.29.2-linux-x86_64.sh
+mkdir /opt/cmake-3.29.2
+./cmake-3.29.2-linux-x86_64.sh --skip-license --prefix=/opt/cmake-3.29.2
+echo 'export PATH=/opt/cmake-3.29.2/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
+````
+
 ## 📦 Exporting YOLOv8 Models
 
 You can export your trained [Ultralytics YOLO](https://docs.ultralytics.com/) models to the ONNX format required by this project. Use the Ultralytics `export` mode for this.
