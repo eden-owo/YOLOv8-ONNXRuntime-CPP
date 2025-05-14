@@ -35,6 +35,14 @@ python -m venv yolov8
 source yolov8/bin/activate
 ```
 
+## 📂 Download COCO YAML File
+
+This example uses class names defined in a YAML file. You'll need the `coco.yaml` file, which corresponds to the standard [COCO dataset](https://docs.ultralytics.com/datasets/detect/coco/) classes. Download it directly:
+
+- [Download coco.yaml](https://raw.githubusercontent.com/ultralytics/ultralytics/main/ultralytics/cfg/datasets/coco.yaml)
+
+Save this file in the same directory where you plan to run the executable, or adjust the path in the C++ code accordingly.
+
 ## ⚙️ Dependencies
 
 Ensure you have the following dependencies installed:
@@ -181,14 +189,6 @@ fp16_model_path = "yolov8n_fp16.onnx"
 onnx.save(model_fp16, fp16_model_path)
 print(f"Model converted and saved to {fp16_model_path}")
 ```
-
-## 📂 Download COCO YAML File
-
-This example uses class names defined in a YAML file. You'll need the `coco.yaml` file, which corresponds to the standard [COCO dataset](https://docs.ultralytics.com/datasets/detect/coco/) classes. Download it directly:
-
-- [Download coco.yaml](https://raw.githubusercontent.com/ultralytics/ultralytics/main/ultralytics/cfg/datasets/coco.yaml)
-
-Save this file in the same directory where you plan to run the executable, or adjust the path in the C++ code accordingly.
 
 ## 🤝 Contributing
 
