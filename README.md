@@ -15,7 +15,7 @@ This example provides a practical guide on performing inference with [Ultralytic
 Thanks to recent updates in Ultralytics, YOLOv8 models now include a `Transpose` operation, aligning their output shape with YOLOv5. This allows the C++ code in this project to run inference seamlessly for YOLOv5, YOLOv7, and YOLOv8 models exported to the [ONNX format](https://onnx.ai/).
 
 ## ✅ Requirements
-CMake version 3.29.2 or higher is required.
+CMake version 3.29.2 or higher is recommended.
 Please make sure you have updated CMake accordingly.
 
 Set the required environment variables.
