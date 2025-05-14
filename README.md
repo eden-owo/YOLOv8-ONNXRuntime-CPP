@@ -39,6 +39,7 @@ Clone the Repository and install Ultralytics Python package (if needed for expor
 ```bash
 git clone https://github.com/ultralytics/ultralytics
 cd ultralytics
+pip install --upgrade pip
 pip install .
 ```
 
