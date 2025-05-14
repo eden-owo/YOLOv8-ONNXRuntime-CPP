@@ -35,67 +35,6 @@ python -m venv yolov8
 source yolov8/bin/activate
 ```
 
-## 📦 Exporting YOLOv8 Models
-
-You can export your trained [Ultralytics YOLO](https://docs.ultralytics.com/) models to the ONNX format required by this project. Use the Ultralytics `export` mode for this.
-
-### Python
-
-```python
-from ultralytics import YOLO
-
-# Load a YOLOv8 model (e.g., yolov8n.pt)
-model = YOLO("yolov8n.pt")
-
-# Export the model to ONNX format
-# opset=12 is recommended for compatibility
-# simplify=True optimizes the model graph
-# dynamic=False ensures fixed input size, often better for C++ deployment
-# imgsz=640 sets the input image size
-model.export(format="onnx", opset=12, simplify=True, dynamic=False, imgsz=640)
-print("Model exported successfully to yolov8n.onnx")
-```
-
-### CLI
-
-```bash
-# Export the model using the command line
-yolo export model=yolov8n.pt format=onnx opset=12 simplify=True dynamic=False imgsz=640
-```
-
-For more details on exporting models, refer to the [Ultralytics Export documentation](https://docs.ultralytics.com/modes/export/).
-
-## 📦 Exporting YOLOv8 FP16 Models
-
-To potentially gain further performance on compatible hardware (like NVIDIA GPUs), you can convert the exported FP32 ONNX model to FP16.
-
-```python
-import onnx
-from onnxconverter_common import (
-    float16,
-)  # Ensure you have onnxconverter-common installed: pip install onnxconverter-common
-
-# Load your FP32 ONNX model
-fp32_model_path = "yolov8n.onnx"
-model = onnx.load(fp32_model_path)
-
-# Convert the model to FP16
-model_fp16 = float16.convert_float_to_float16(model)
-
-# Save the FP16 model
-fp16_model_path = "yolov8n_fp16.onnx"
-onnx.save(model_fp16, fp16_model_path)
-print(f"Model converted and saved to {fp16_model_path}")
-```
-
-## 📂 Download COCO YAML File
-
-This example uses class names defined in a YAML file. You'll need the `coco.yaml` file, which corresponds to the standard [COCO dataset](https://docs.ultralytics.com/datasets/detect/coco/) classes. Download it directly:
-
-- [Download coco.yaml](https://raw.githubusercontent.com/ultralytics/ultralytics/main/ultralytics/cfg/datasets/coco.yaml)
-
-Save this file in the same directory where you plan to run the executable, or adjust the path in the C++ code accordingly.
-
 ## ⚙️ Dependencies
 
 Ensure you have the following dependencies installed:
@@ -189,6 +128,67 @@ Run the executable from the `build` directory:
 ```bash
 ./yolov8_onnxruntime_cpp
 ```
+
+## 📦 Exporting YOLOv8 Models
+
+You can export your trained [Ultralytics YOLO](https://docs.ultralytics.com/) models to the ONNX format required by this project. Use the Ultralytics `export` mode for this.
+
+### Python
+
+```python
+from ultralytics import YOLO
+
+# Load a YOLOv8 model (e.g., yolov8n.pt)
+model = YOLO("yolov8n.pt")
+
+# Export the model to ONNX format
+# opset=12 is recommended for compatibility
+# simplify=True optimizes the model graph
+# dynamic=False ensures fixed input size, often better for C++ deployment
+# imgsz=640 sets the input image size
+model.export(format="onnx", opset=12, simplify=True, dynamic=False, imgsz=640)
+print("Model exported successfully to yolov8n.onnx")
+```
+
+### CLI
+
+```bash
+# Export the model using the command line
+yolo export model=yolov8n.pt format=onnx opset=12 simplify=True dynamic=False imgsz=640
+```
+
+For more details on exporting models, refer to the [Ultralytics Export documentation](https://docs.ultralytics.com/modes/export/).
+
+## 📦 Exporting YOLOv8 FP16 Models
+
+To potentially gain further performance on compatible hardware (like NVIDIA GPUs), you can convert the exported FP32 ONNX model to FP16.
+
+```python
+import onnx
+from onnxconverter_common import (
+    float16,
+)  # Ensure you have onnxconverter-common installed: pip install onnxconverter-common
+
+# Load your FP32 ONNX model
+fp32_model_path = "yolov8n.onnx"
+model = onnx.load(fp32_model_path)
+
+# Convert the model to FP16
+model_fp16 = float16.convert_float_to_float16(model)
+
+# Save the FP16 model
+fp16_model_path = "yolov8n_fp16.onnx"
+onnx.save(model_fp16, fp16_model_path)
+print(f"Model converted and saved to {fp16_model_path}")
+```
+
+## 📂 Download COCO YAML File
+
+This example uses class names defined in a YAML file. You'll need the `coco.yaml` file, which corresponds to the standard [COCO dataset](https://docs.ultralytics.com/datasets/detect/coco/) classes. Download it directly:
+
+- [Download coco.yaml](https://raw.githubusercontent.com/ultralytics/ultralytics/main/ultralytics/cfg/datasets/coco.yaml)
+
+Save this file in the same directory where you plan to run the executable, or adjust the path in the C++ code accordingly.
 
 ## 🤝 Contributing
 
