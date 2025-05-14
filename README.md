@@ -98,7 +98,7 @@ cd examples/YOLOv8-ONNXRuntime-CPP
 
 **Export the model using the command line**
 ```bash
-yolo export model=yolov8n.pt format=onnx opset=12 simplify=True dynamic=False imgsz=640
+yolo export model=yolov8n.pt format=onnx opset=12 simplify=True dynamic=False imgsz=640 device=0
 ```
 
 For more details on exporting models, refer to the [Ultralytics Export documentation](https://docs.ultralytics.com/modes/export/).
