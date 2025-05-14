@@ -103,29 +103,6 @@ yolo export model=yolov8n.pt format=onnx opset=12 simplify=True dynamic=False im
 
 For more details on exporting models, refer to the [Ultralytics Export documentation](https://docs.ultralytics.com/modes/export/).
 
-## 📦 Exporting YOLOv8 FP16 Models
-
-To potentially gain further performance on compatible hardware (like NVIDIA GPUs), you can convert the exported FP32 ONNX model to FP16.
-
-```python
-import onnx
-from onnxconverter_common import (
-    float16,
-)  # Ensure you have onnxconverter-common installed: pip install onnxconverter-common
-
-# Load your FP32 ONNX model
-fp32_model_path = "yolov8n.onnx"
-model = onnx.load(fp32_model_path)
-
-# Convert the model to FP16
-model_fp16 = float16.convert_float_to_float16(model)
-
-# Save the FP16 model
-fp16_model_path = "yolov8n_fp16.onnx"
-onnx.save(model_fp16, fp16_model_path)
-print(f"Model converted and saved to {fp16_model_path}")
-```
-
 ## 🛠️ Build Instructions
 
 1.  **Navigate to the YOLOv8-ONNXRuntime-CPP example directory:**
@@ -199,6 +176,29 @@ Run the executable from the `build` directory:
 
 ```bash
 ./yolov8_onnxruntime_cpp
+```
+
+## 📦 Exporting YOLOv8 FP16 Models
+
+To potentially gain further performance on compatible hardware (like NVIDIA GPUs), you can convert the exported FP32 ONNX model to FP16.
+
+```python
+import onnx
+from onnxconverter_common import (
+    float16,
+)  # Ensure you have onnxconverter-common installed: pip install onnxconverter-common
+
+# Load your FP32 ONNX model
+fp32_model_path = "yolov8n.onnx"
+model = onnx.load(fp32_model_path)
+
+# Convert the model to FP16
+model_fp16 = float16.convert_float_to_float16(model)
+
+# Save the FP16 model
+fp16_model_path = "yolov8n_fp16.onnx"
+onnx.save(model_fp16, fp16_model_path)
+print(f"Model converted and saved to {fp16_model_path}")
 ```
 
 ## 🤝 Contributing
