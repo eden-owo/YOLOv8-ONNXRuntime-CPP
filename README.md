@@ -91,12 +91,12 @@ print("Model exported successfully to yolov8n.onnx")
 ```
 
 ### CLI
-**Navigate to the YOLOv8-ONNXRuntime-CPP example directory:**
+Navigate to the YOLOv8-ONNXRuntime-CPP example directory:
 ```bash
 cd examples/YOLOv8-ONNXRuntime-CPP
 ```
 
-**Export the model using the command line**
+Export the model using the command line
 ```bash
 yolo export model=yolov8n.pt format=onnx opset=12 simplify=True dynamic=False imgsz=640 device=0
 ```
