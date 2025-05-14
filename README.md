@@ -29,7 +29,7 @@ echo 'export PATH=/opt/cmake-3.29.2/bin:$PATH' >> ~/.bashrc
 source ~/.bashrc
 ````
 
-Use python virtual environment will be recommanded.
+Using a Python virtual environment is highly recommended to avoid dependency conflicts.
 ```bash
 python -m venv yolov8
 source yolov8/bin/activate
