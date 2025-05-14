@@ -35,6 +35,13 @@ python -m venv yolov8
 source yolov8/bin/activate
 ```
 
+Clone the Repository and install Ultralytics Python package (if needed for exporting models)
+```bash
+git clone https://github.com/ultralytics/ultralytics
+cd ultralytics
+pip install .
+```
+
 ## 📂 Download COCO YAML File
 
 This example uses class names defined in a YAML file. You'll need the `coco.yaml` file, which corresponds to the standard [COCO dataset](https://docs.ultralytics.com/datasets/detect/coco/) classes. Download it directly:
@@ -63,10 +70,9 @@ Ensure you have the following dependencies installed:
 
 ## 🛠️ Build Instructions
 
-1.  **Clone the Repository:**
+1.  **Navigate to the YOLOv8-ONNXRuntime-CPP example directory:**
 
     ```bash
-    git clone https://github.com/ultralytics/ultralytics.git
     cd ultralytics/examples/YOLOv8-ONNXRuntime-CPP
     ```
 
