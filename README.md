@@ -29,6 +29,12 @@ echo 'export PATH=/opt/cmake-3.29.2/bin:$PATH' >> ~/.bashrc
 source ~/.bashrc
 ````
 
+Use python virtual environment will be recommanded.
+```bash
+python -m venv yolov8
+source yolov8/bin/activate
+```
+
 ## 📦 Exporting YOLOv8 Models
 
 You can export your trained [Ultralytics YOLO](https://docs.ultralytics.com/) models to the ONNX format required by this project. Use the Ultralytics `export` mode for this.
