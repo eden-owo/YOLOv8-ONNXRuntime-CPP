@@ -2,17 +2,11 @@
 
 <img alt="C++" src="https://img.shields.io/badge/C++-17-blue.svg?style=flat&logo=c%2B%2B"> <img alt="Onnx-runtime" src="https://img.shields.io/badge/OnnxRuntime-717272.svg?logo=Onnx&logoColor=white">
 
-This example provides a practical guide on performing inference with [Ultralytics YOLOv8](https://docs.ultralytics.com/models/yolov8/) models using [C++](https://isocpp.org/), leveraging the capabilities of the [ONNX Runtime](https://onnxruntime.ai/) and the [OpenCV](https://opencv.org/) library. It's designed for developers looking to integrate YOLOv8 into C++ applications for efficient object detection.
+This example follows [Ultralytics YOLOv8 Docs](https://docs.ultralytics.com/models/yolov8/) and [Ultralytics YOLOv8 Github]((https://github.com/ultralytics/ultralytics/tree/main/examples/YOLOv8-ONNXRuntime-CPP))  and provides a practical guide on performing inference with [Ultralytics YOLOv8](https://docs.ultralytics.com/models/yolov8/) models using [C++](https://isocpp.org/), leveraging the capabilities of the [ONNX Runtime](https://onnxruntime.ai/) and the [OpenCV](https://opencv.org/) library. It's designed for developers looking to integrate YOLOv8 into C++ applications for efficient object detection.
 
 ## ✨ Benefits
 
-- **Deployment-Friendly:** Well-suited for deployment in industrial and production environments.
 - **Performance:** Offers faster [inference latency](https://www.ultralytics.com/glossary/inference-latency) compared to OpenCV's DNN module on both CPU and [GPU](https://www.ultralytics.com/glossary/gpu-graphics-processing-unit).
-- **Acceleration:** Supports FP32 and [FP16 (Half Precision)](https://www.ultralytics.com/glossary/half-precision) inference acceleration using [NVIDIA CUDA](https://developer.nvidia.com/cuda-toolkit).
-
-## ☕ Note
-
-Thanks to recent updates in Ultralytics, YOLOv8 models now include a `Transpose` operation, aligning their output shape with YOLOv5. This allows the C++ code in this project to run inference seamlessly for YOLOv5, YOLOv7, and YOLOv8 models exported to the [ONNX format](https://onnx.ai/).
 
 ## ✅ Requirements
 CMake version 3.29.2 or higher is recommended.
