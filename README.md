@@ -31,8 +31,8 @@ source yolov8/bin/activate
 
 Clone the Repository and install Ultralytics Python package (if needed for exporting models)
 ```bash
-git clone https://github.com/ultralytics/ultralytics
-cd ultralytics
+git clone https://github.com/eden-ouob/YOLOv8-ONNXRuntime-CPP.git
+cd YOLOv8-ONNXRuntime-CPP
 pip install --upgrade pip
 pip install .
 ```
