@@ -172,7 +172,7 @@ Run the executable from the `build` directory:
 ./yolov8_onnxruntime_cpp
 ```
 
-![image](https://github.com/user-attachments/assets/7b3fa30e-261e-4019-a2b0-97a9ea12bf39)
+![image](https://github.com/eden-owo/YOLOv8-ONNXRuntime-CPP/blob/master/imgs/output_frame.png)
 
 
 ## 📦 Exporting YOLOv8 FP16 Models
